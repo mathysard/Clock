@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@600;700&family=Poppins:wght@200;300&display=swap');
+        body {
+            font-family: Poppins, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex justify-center h-screen items-center">
+        <div class="flex flex-col">
+            <p id="day" class="text-4xl mb-8"></p>
+            <div class="flex justify-center bg-gray-300 p-8 rounded-lg text-4xl">
+                <p id="hours">00</p>
+                <p>:</p>
+                <p id="minutes">00</p>
+                <p>:</p>
+                <p id="seconds">00</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function clock() {
+            const array = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+            const month = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+            const hours = new Date().getHours();
+            const minutes = new Date().getMinutes();
+            const seconds = new Date().getSeconds();
+            
+            $("#day").html(array[new Date().getDay() - 1] + " " + new Date().getDate() + " " + month[new Date().getMonth()] + " " + new Date().getFullYear());
+            hours > 10 ? $("#hours").text(hours) : $("#hours").text("0" + hours);
+            minutes > 10 ? $("#minutes").text(minutes) : $("#minutes").text("0" + minutes);
+            seconds > 10 ? $("#seconds").text(seconds) : $("#seconds").text("0" + seconds);
+        }
+
+        setInterval(clock, 1000);
+    </script>
+</body>
+</html>
